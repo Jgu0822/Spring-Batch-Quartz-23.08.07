@@ -1,0 +1,57 @@
+quartz:
+  enable: true
+
+server:
+  port: 9090
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/chinaQuartz
+    username: root
+    password: 1234
+  batch:
+    jdbc:
+      initialize-schema: always
+
+    # tomcat:
+    #   initialSize: 20
+    #   maxActive: 100
+    #   maxIdle: 100
+    #   minIdle: 20
+    #   maxWait: 10000
+    #   testWhileIdle: true
+    #   testOnBorrow: false
+    #   testOnReturn: false
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+
+
+  quartz:
+    job-store-type: jdbc
+    properties:
+      org:
+        quartz:
+          jobStore:
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: false
+    job-store:
+      use-properties: false
+
+#logging:
+#  level:
+#    org.springframework.boot.autoconfigure: DEBUG
+
+
+# 로그 프로필 가져오기
+##=====================================  log  =============================
+# logging:
+#   config: classpath:log4j2.xml
