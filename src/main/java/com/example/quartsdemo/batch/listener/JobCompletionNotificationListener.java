@@ -27,7 +27,7 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
 		// Job의 실행 결과를 확인하여 BatchStatus가 COMPLETED인지 검사합니다.
 		if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
 			// BatchStatus가 COMPLETED인 경우, 로깅을 통해 작업 완료를 알립니다.
-			LOGGER.info("!!! JOB FINISHED! Time to verify the results");
+			LOGGER.info("!!! 작업 완료! 결과를 확인할 수 있습니다");
 
 			// 데이터베이스에서 쿼리를 수행할 SQL 문을 정의합니다. 이 예제에서는 coffee 테이블에서 필요한 컬럼을 선택하도록 SQL을 작성했습니다.
 			String query = "SELECT brand, origin, characteristics, processed, coffee_id FROM coffee";
@@ -45,7 +45,7 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
 									rs.getString(4)
 							)
 					)
-					.forEach(coffee -> LOGGER.info("Found < {} > in the database.", coffee));
+					.forEach(coffee -> LOGGER.info("데이터 베이스에서 < {} > 찾았습니다.", coffee));
 		}
 	}
 }

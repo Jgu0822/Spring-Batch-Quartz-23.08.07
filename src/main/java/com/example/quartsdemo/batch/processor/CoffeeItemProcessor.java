@@ -1,3 +1,4 @@
+// Coffee 레코드 대문자 변환 역할
 package com.example.quartsdemo.batch.processor;
 
 import com.example.quartsdemo.batch.repository.entity.Coffee;
